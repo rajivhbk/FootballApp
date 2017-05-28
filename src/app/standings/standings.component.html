@@ -1,0 +1,49 @@
+<h1>Standings</h1>
+<table  class="table table-bordered">
+    <thead>
+    <tr>
+        <th class="text-centre">
+            <div>Position</div>
+        </th>
+        <th>Club</th>
+        <th>
+            <div>Played</div>
+        </th>
+        <th>
+            <div>Won</div>
+        </th>
+        <th>
+            <div>Drawn</div>
+        </th>
+        <th>
+            <div>Lost</div>
+        </th>
+        <th><abbr title="Goals For">GF</abbr></th>
+        <th><abbr title="Goals Against">GA</abbr></th>
+        <th><abbr title="Goal Difference">GD</abbr></th>
+        <th>
+            <div>Points</div>
+        </th>
+        <!--<th>Form</th>
+        <th class="text-centre">Next</th>-->
+    </tr>
+    </thead>
+    <tbody class="standings">
+      <tr *ngFor="let table of tables" [routerLink]="['/teams', table._links.team.href.split('/').pop()]">
+        <td>{{table.position}}</td>
+        <td>
+          <span style="float: left;width: 20%;">
+            <img class="media-object thumbnail" [src]="table.crestURI" alt="">
+          </span>
+          <span style="float:right;width: 80%;">{{table.teamName.split(' ')[0]}}</span>
+        </td>
+        <td>{{table.playedGames}}</td>
+        <td>{{table.wins}}</td>
+        <td>{{table.draws}}</td>
+        <td>{{table.losses}}</td>
+        <td>{{table.goals}}</td>
+        <td>{{table.goalsAgainst}}</td>
+        <td>{{table.goalDifference}}</td>
+        <td>{{table.points}}</td>
+      </tr>
+    </tbody>
