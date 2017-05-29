@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RequestOptions } from '@angular/http';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -13,13 +12,16 @@ export class CompetitionService {
 
 
   getCompetitions(season?){
+    let headers = new Headers({ 'Accept': 'application/json' });
+    headers.append('X-Auth-Token','10658a2ebc0a44a2967a31d2ba92b5a4');
     let options = new RequestOptions();
+    options.headers = headers;
     options.search = season;
-    return this._http.get(this._url, options)
-      .map(competetions => {
-        return competetions.json();
-      })
-      .catch(this.handleError);
+      return this._http.get(this._url, options)
+        .map(competetions => {
+          return competetions.json();
+        })
+        .catch(this.handleError);
   }
 
   private handleError(err) {

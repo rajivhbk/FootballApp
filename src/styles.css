@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.thumbnail{
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 0;
+    padding: 0;
+}

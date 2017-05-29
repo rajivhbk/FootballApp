@@ -1,0 +1,7 @@
+.competition tr {	
+    cursor: pointer;	
+}
+
+.competition tr:hover {	
+    background: #ecf0f1;	
+}

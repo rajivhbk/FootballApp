@@ -10,7 +10,7 @@
             <th>Number Of Teams</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="competition">
         <tr *ngFor="let comp of _competitions"  [routerLink]="['/standings', comp.id]">
                 <td>{{comp.caption}}</td>
                 <td>{{comp.league}}</td>

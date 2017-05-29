@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -12,13 +12,16 @@ export class StandingsService {
 
 
   getLeagueTables(id?){
-  let url = this._baseUrl + id + '/leagueTable'
-    return this._http.get(url)
-      .map(leagues => {
-        return leagues.json();
-      })
-      .catch(this.handleError);
-  }
+    let headers = new Headers({ 'Accept': 'application/json' });
+    headers.append('X-Auth-Token','10658a2ebc0a44a2967a31d2ba92b5a4');
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseUrl + id + '/leagueTable'
+      return this._http.get(url, options)
+        .map(leagues => {
+          return leagues.json();
+        })
+        .catch(this.handleError);
+      }
 
   private handleError(err) {
     return Observable.throw(err || 'Server error');
